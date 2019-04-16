@@ -8,19 +8,19 @@ var Chronometer = function (){
   this.startClick = function () {
     this.time = setInterval(() => {
       if (this.minutes < 99) {
-        ++this.milliseconds
+        this.milliseconds++;
 
         this.printMilliseconds(this.milliseconds)
 
-        if (this.milliseconds % 60 === 0) {
+        if (this.milliseconds % 100 === 0) {
           //Seconds
           this.milliseconds = 0;
-          ++this.seconds
+          this.seconds++;
           this.printSeconds(this.seconds);
         } else if (this.seconds % 60 === 0 && this.seconds !== 0) {
           //Minutes
           this.seconds = 0;
-          ++this.minutes;
+          this.minutes++;
           this.printMinutes(this.minutes);
         }
       } else {
@@ -30,6 +30,7 @@ var Chronometer = function (){
 
     }, 10)
   }
+
   this.twoDigitsNumber = function (valueToConvert) {
     let stringValue = valueToConvert.toString().split(""),
       twoDigit;
